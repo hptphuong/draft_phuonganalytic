@@ -46,6 +46,7 @@
     	core.inf['tid']=arguments[1]
     	if(void 0 !=arguments[2] && arguments[2]=='auto'){
     		setCookie.apply(core,arguments);
+            return
     	}
     	
     }
@@ -85,3 +86,43 @@
     
 // }
 // )(window, document, 'script', 'http://127.0.0.1:8000/static/test-analytic.js', 'fsa');
+
+
+// var isMobile = {
+//     Android: function() {
+//         return navigator.userAgent.match(/Android/i);
+//     },
+//     BlackBerry: function() {
+//         return navigator.userAgent.match(/BlackBerry/i);
+//     },
+//     iOS: function() {
+//         return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+//     },
+//     Opera: function() {
+//         return navigator.userAgent.match(/Opera Mini/i);
+//     },
+//     Windows: function() {
+//         return navigator.userAgent.match(/IEMobile/i);
+//     },
+//     any: function() {
+//         return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+//     }
+// };
+// function(){
+//     if (navigator.userAgent.match(/Tablet|iPad/i))
+//     {
+//     // do tablet stuff
+//         return "tablet"
+//     } else if(navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) )
+//     {
+//     // do mobile stuff
+//         return "mobile"
+//     } else {
+//         return ""
+//     // do desktop stuff
+//     }    
+// }
+
+
+// ga('send','pageview')
+// ga('sent','event')
