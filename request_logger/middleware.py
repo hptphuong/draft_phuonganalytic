@@ -22,7 +22,7 @@ class RequestLoggerMiddleware(MiddlewareMixin):
 
     def process_request(self, request):
         if (request.path!='/a.gif'):
-            return None
+            return 
         info = request.GET
         producer = KafkaProducer(
             bootstrap_servers=settings.KAFKA_SERVERS,

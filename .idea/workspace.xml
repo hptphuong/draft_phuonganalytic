@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93d30bba-942f-47c1-8fe2-ccdf4cfb6ef6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/test-analytic.js" afterPath="$PROJECT_DIR$/static/test-analytic.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -121,20 +120,18 @@
         <entry file="file://$PROJECT_DIR$/static/test-analytic.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1972">
-              <caret line="123" column="22" lean-forward="false" selection-start-line="123" selection-start-column="22" selection-end-line="123" selection-end-column="22" />
+              <caret line="181" column="22" lean-forward="false" selection-start-line="181" selection-start-column="22" selection-end-line="181" selection-end-column="22" />
               <folding>
-                <marker date="1510217766787" expanded="true" signature="3048:3244" ph="//..." />
-                <marker date="1510217766787" expanded="true" signature="3048:3256" ph="{...}" />
-                <marker date="1510217766787" expanded="true" signature="3284:3574" ph="{...}" />
-                <marker date="1510217766787" expanded="true" signature="3580:3637" ph="//..." />
-                <marker date="1510217766787" expanded="true" signature="3698:3917" ph="{...}" />
-                <marker date="1510217766787" expanded="true" signature="3839:3905" ph="{...}" />
-                <marker date="1510217766787" expanded="true" signature="3979:4044" ph="{...}" />
-                <marker date="1510217766787" expanded="true" signature="4284:4641" ph="//..." />
-                <marker date="1510217766787" expanded="true" signature="4647:4741" ph="//..." />
-                <marker date="1510217766787" expanded="true" signature="4743:5100" ph="//..." />
-                <marker date="1510217766787" expanded="true" signature="5106:5215" ph="//..." />
-                <marker date="1510217766787" expanded="true" signature="5217:6327" ph="//..." />
+                <marker date="1510294819239" expanded="true" signature="6149:6198" ph="{...}" />
+                <marker date="1510294819239" expanded="true" signature="6149:6210" ph="{...}" />
+                <marker date="1510294819239" expanded="true" signature="6272:6337" ph="{...}" />
+                <marker date="1510294819239" expanded="true" signature="6452:6553" ph="{...}" />
+                <marker date="1510294819239" expanded="true" signature="6480:6549" ph="{...}" />
+                <marker date="1510294819239" expanded="true" signature="6577:6934" ph="//..." />
+                <marker date="1510294819239" expanded="true" signature="6940:7034" ph="//..." />
+                <marker date="1510294819239" expanded="true" signature="7036:7393" ph="//..." />
+                <marker date="1510294819239" expanded="true" signature="7399:7508" ph="//..." />
+                <marker date="1510294819239" expanded="true" signature="7510:8620" ph="//..." />
               </folding>
             </state>
           </provider>
@@ -384,9 +381,9 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286334" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2516269" sideWeight="0.49583334" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2516269" sideWeight="0.49583334" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2496" sideWeight="0.47551343" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.318872" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="22" y="368" width="1875" height="303" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.318872" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="22" y="368" width="1875" height="303" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31626666" sideWeight="0.5095339" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4219089" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -761,20 +758,18 @@
     <entry file="file://$PROJECT_DIR$/static/test-analytic.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1972">
-          <caret line="123" column="22" lean-forward="false" selection-start-line="123" selection-start-column="22" selection-end-line="123" selection-end-column="22" />
+          <caret line="181" column="22" lean-forward="false" selection-start-line="181" selection-start-column="22" selection-end-line="181" selection-end-column="22" />
           <folding>
-            <marker date="1510217766787" expanded="true" signature="3048:3244" ph="//..." />
-            <marker date="1510217766787" expanded="true" signature="3048:3256" ph="{...}" />
-            <marker date="1510217766787" expanded="true" signature="3284:3574" ph="{...}" />
-            <marker date="1510217766787" expanded="true" signature="3580:3637" ph="//..." />
-            <marker date="1510217766787" expanded="true" signature="3698:3917" ph="{...}" />
-            <marker date="1510217766787" expanded="true" signature="3839:3905" ph="{...}" />
-            <marker date="1510217766787" expanded="true" signature="3979:4044" ph="{...}" />
-            <marker date="1510217766787" expanded="true" signature="4284:4641" ph="//..." />
-            <marker date="1510217766787" expanded="true" signature="4647:4741" ph="//..." />
-            <marker date="1510217766787" expanded="true" signature="4743:5100" ph="//..." />
-            <marker date="1510217766787" expanded="true" signature="5106:5215" ph="//..." />
-            <marker date="1510217766787" expanded="true" signature="5217:6327" ph="//..." />
+            <marker date="1510294819239" expanded="true" signature="6149:6198" ph="{...}" />
+            <marker date="1510294819239" expanded="true" signature="6149:6210" ph="{...}" />
+            <marker date="1510294819239" expanded="true" signature="6272:6337" ph="{...}" />
+            <marker date="1510294819239" expanded="true" signature="6452:6553" ph="{...}" />
+            <marker date="1510294819239" expanded="true" signature="6480:6549" ph="{...}" />
+            <marker date="1510294819239" expanded="true" signature="6577:6934" ph="//..." />
+            <marker date="1510294819239" expanded="true" signature="6940:7034" ph="//..." />
+            <marker date="1510294819239" expanded="true" signature="7036:7393" ph="//..." />
+            <marker date="1510294819239" expanded="true" signature="7399:7508" ph="//..." />
+            <marker date="1510294819239" expanded="true" signature="7510:8620" ph="//..." />
           </folding>
         </state>
       </provider>
