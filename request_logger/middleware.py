@@ -41,8 +41,8 @@ class RequestLoggerMiddleware(MiddlewareMixin):
 
         producer.send(
             topic='test',
-            key=b'request.url',
-            value=info['url'].encode()
+            key=b'request.tid',
+            value=info['tid'].encode()
         )
         # producer.send(
         #     topic='test',
