@@ -9,7 +9,10 @@ from django.http import HttpResponse
 
 from django.contrib.gis.geoip2 import GeoIP2
 import base64
-
+producer = KafkaProducer(
+    bootstrap_servers=settings.KAFKA_SERVERS,
+    retries=5
+)
 
 
 class RequestLoggerMiddleware(MiddlewareMixin):
@@ -24,10 +27,7 @@ class RequestLoggerMiddleware(MiddlewareMixin):
         if (request.path!='/a.gif'):
             return 
         info = request.GET
-        producer = KafkaProducer(
-            bootstrap_servers=settings.KAFKA_SERVERS,
-            retries=5
-        )
+
 
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
 
@@ -60,8 +60,8 @@ class RequestLoggerMiddleware(MiddlewareMixin):
         #     key=b'request.city',
         #     value=str(g.city(ip)).encode()
         # )
-        producer = KafkaProducer(value_serializer=lambda v: json.dumps(v).encode('utf-8'))
-        producer.send('test', {'foo': 'bar'})
+        # producer = KafkaProducer(value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+        # producer.send('test', {'foo': 'bar'})
         # PIXEL_GIF_DATA = base64.b64decode("")
 
         return HttpResponse(base64.b64decode(""), content_type='image/gif')

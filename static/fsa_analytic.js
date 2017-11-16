@@ -1,6 +1,7 @@
 (function() {
     var O = window,
-        M = document;
+        M = document,
+        m_loccation = M.location;;
     var qa = function(a) { // return true if string * not undefine
             return void 0 != a && -1 < (a.constructor + "").indexOf("String")
         },
@@ -51,30 +52,23 @@
 
     }
     $fsaCore.prototype.requestImage = function(m_src, tailUrl) {
-        // var m_tracker = this;
-        // url = encodeURIComponent("https://phuonganalytic.herokuapp.com"),
-        //     title = encodeURIComponent(document.title),
-        //     ref = encodeURIComponent(document.referrer);
-        // img.src = 'http://127.0.0.1:8000/a.gif?url=' + url + '&t=' + title + '&ref=' + ref;
+        // create 1 image request with link = m_src+tailUrl
         var img = new Image,
             t = arguments[2];
         url = encodeURIComponent("https://phuonganalytic.herokuapp.com"),
             title = encodeURIComponent(M.title),
             ref = encodeURIComponent(M.referrer);
-        // img.src = 'http://127.0.0.1:8000/a.gif?url=' + '&t=' + t;
         img.src = m_src + tailUrl;
-
-
     }
 
-    var fsaCore = new $fsaCore;
-
-    var rnd_32int = function() {
-        return Math.round(2147483647 * Math.random())
-    };
+    var fsaCore = new $fsaCore,
+        rnd_32int = function() {
+            //random integer number
+            return Math.round(2147483647 * Math.random())
+        };
 
     function ga_hash(a) {
-        // copy of google analytic hash
+        // re-use google analytic hash
         var b = 1,
             c;
         if (a)
@@ -86,7 +80,7 @@
                 b = 0 != d ? b ^ d >> 21 : b
             }
         return b
-    }
+    };
     var ra = function() {
         for (var a = O.navigator.userAgent + (M.cookie ? M.cookie : "") + (M.referrer ? M.referrer : ""), b = a.length, c = O.history.length; 0 < c;)
             a += c-- ^ b++;
@@ -145,32 +139,101 @@
             }
 
         }
-
-
         return rootDomain;
-
     };
 
 
     // Create a create function for fsa core
 
-    fsaCore.create("create", function(a, b, c, d) {
+    fsaCore.create("create", function(a) {
         // Insert to tracker
-        if (void 0 == b || a.split(".").length > 1) return;
-        var m_userId = void 0;
-        if (typeof b == "string") {
-            m_trackingId = b;
-            if (!c || typeof c != "string") return;
-            c == 'auto' ? m_cookieDomain = findRootDomain() : m_cookieDomain = c;
-            void 0 != d ? m_name = d : m_name = "t0";
+        // if (void 0 == b || a.split(".").length > 1) return;
+        // var m_userId = void 0;
+        // if (typeof b == "string") {
+        //     m_trackingId = b;
+        //     if (!c || typeof c != "string") return;
+        //     c == 'auto' ? m_cookieDomain = findRootDomain() : m_cookieDomain = c;
+        //     void 0 != d ? m_name = d : m_name = "t0";
 
-        } // ('create','trackingID')
-        else if (typeof b == "object") { // ('create',jsonOBJ)
-            (void 0 != b.trackingId && typeof b.trackingId) ? m_trackingId = b.trackingId: void 0;
-            void 0 != b.cookieDomain ? (b.cookieDomain == "auto" ? m_cookieDomain = findRootDomain() : m_cookieDomain = b.cookieDomain) : m_cookieDomain = findRootDomain();
-            void 0 != b.name ? m_name = b.name : m_name = "t0";
-            void 0 != b.userId ? m_userId = b.userId : void 0;
-        } else return;
+        // } // ('create','trackingID')
+        // else if (typeof b == "object") { // ('create',jsonOBJ)
+        //     (void 0 != b.trackingId && typeof b.trackingId) ? m_trackingId = b.trackingId: void 0;
+        //     void 0 != b.cookieDomain ? (b.cookieDomain == "auto" ? m_cookieDomain = findRootDomain() : m_cookieDomain = b.cookieDomain) : m_cookieDomain = findRootDomain();
+        //     void 0 != b.name ? m_name = b.name : m_name = "t0";
+        //     void 0 != b.userId ? m_userId = b.userId : void 0;
+        // } else return;
+        var m_name,
+            m_trackingId,
+            m_cookieDomain,
+            m_userId,
+            m_language,
+            m_encoding;
+        // if ( < 2) return;
+        switch (arguments.length) {
+            case 2:
+                if (typeof arguments[1] == "object") {
+                    var b = arguments[1];
+                    (void 0 != b.trackingId && typeof b.trackingId) ? m_trackingId = b.trackingId: void 0;
+                    void 0 != b.cookieDomain ? (b.cookieDomain == "auto" ? m_cookieDomain = findRootDomain() : m_cookieDomain = b.cookieDomain) : m_cookieDomain = findRootDomain();
+                    void 0 != b.name ? m_name = b.name : m_name = "t0";
+                    void 0 != b.userId ? m_userId = b.userId : void 0;
+                } else if (arguments[1] == "string") {
+                    m_trackingId = arguments[1];
+                    m_cookieDomain = findRootDomain();
+                    m_name = "t0";
+                } else
+                    return;
+                break;
+            case 3:
+
+                if (typeof arguments[1] == "string" && typeof arguments[2] == "string") {
+                    // fsa('create', 'UA-107854568-1', 'auto');
+                    m_trackingId = arguments[1];
+                    arguments[2] == 'auto' ? m_cookieDomain = findRootDomain() : m_cookieDomain = arguments[2];
+                    m_name = "t0";
+
+                } else return;
+                break;
+            case 4:
+                if (typeof arguments[1] == "string" && typeof arguments[2] == "string" && typeof arguments[3] == "string") {
+                    // fsa('create', 'UA-107854568-1', 'auto','mytracker');
+
+                    typeof arguments[1] == "string" ? m_trackingId = arguments[1] : m_trackingId = void 0;
+                    arguments[2] == 'auto' ? m_cookieDomain = findRootDomain() : m_cookieDomain = arguments[2];
+                    arguments[3] == 'auto' ? m_name = "t0" : m_name = arguments[3];
+
+                } else return;
+                break;
+            case 5:
+                if (typeof arguments[1] == "string" && typeof arguments[2] == "string" && typeof arguments[3] == "string" && typeof arguments[4] == "object") {
+                    // fsa('create', 'UA-107854568-1', 'auto','mytracker');
+
+                    typeof arguments[1] == "string" ? m_trackingId = arguments[1] : m_trackingId = void 0;
+                    arguments[2] == 'auto' ? m_cookieDomain = findRootDomain() : m_cookieDomain = arguments[2];
+                    arguments[3] == 'auto' ? m_name = "t0" : m_name = arguments[3];
+                    arguments[4].hasOwnProperty("userId") && (m_userId = arguments[4].userId);
+
+                } else
+                    return;
+                break;
+                // ga('create', 'UA-XXXXX-Y', 'auto', 'myTracker', {
+                //     userId: '12345'
+                // });
+
+            default:
+                return
+        };
+        // if (arguments.length == 2) {
+
+
+
+        // } else if (arguments.length == 3) { //[]
+
+        // } else if (arguments.length == 4) {
+
+        // } else
+        //     return;
+        // }
 
         // check exist of tracker
         m_trackers = this.trackers;
@@ -179,10 +242,6 @@
                 console.log("name exist");
                 return;
             }
-
-
-
-
             // Insert to cookie 2 variable _fsa for 2y and _fsid for 1 day
             // generate third & fourth components of _fsid & _fsa
         if (!/_fsa=/.test(document.cookie)) {
@@ -208,23 +267,40 @@
 
         } else _fsid = getCookie('_fsid').split(".").slice(2).join(".");;
         tracker = new ee;
-        tracker.set("name", m_name);
-        tracker.set("trackingId", m_trackingId);
-        tracker.set("cookieDomain", m_cookieDomain);
-        tracker.set("userId", m_userId);
-        tracker.set("clientID", _fsa);
-        tracker.set("_fsid", _fsid);
+        (void 0 != m_name) && tracker.set("name", m_name);
+        (void 0 != m_trackingId) && tracker.set("trackingId", m_trackingId);
+        (void 0 != m_cookieDomain) && tracker.set("cookieDomain", m_cookieDomain);
+        (void 0 != m_userId) && tracker.set("userId", m_userId);
+        (void 0 != _fsa) && tracker.set("clientID", _fsa);
+        (void 0 != _fsid) && tracker.set("_fsid", _fsid);
+        // add location
+        if (m_loccation) {
+            var m_path = m_loccation.pathname || "";
+            "/" != m_path.charAt(0) && (m_path = "/" + m_path);
+            tracker.set("location", m_loccation.protocol + "//" + m_loccation.hostname + m_path + m_loccation.search);
+        }
+        // add language
+        (b = O.navigator) && (m_language = (b && (b.language || b.browserLanguage) || "").toLowerCase());
+        (void 0 != m_language) && tracker.set('language', m_language);
+        tracker.set("encoding", M.characterSet || M.charset);
+
+
+        // add encoding
+
+
         this.trackers.push(tracker);
     });
 
     // Implement send function
     // ('[trackerName.]send', [hitType], [...fields], [fieldsObject]);
     var fsaSendPageView = function(a) {
-        var tailUrl = "";
-        tailUrl = tailUrl + "v=1";
-        tailUrl = tailUrl + "&_fsid" + a.get("_fsid");
+        var tailUrl = "t=pageview";
+        tailUrl = tailUrl + "&v=1";
+        tailUrl = tailUrl + "&_fsid=" + a.get("_fsid");
         tailUrl = tailUrl + "&cid=" + a.get("clientID");
         tailUrl = tailUrl + "&tid=" + a.get("trackingId");
+        tailUrl = tailUrl + "&dl=" + a.get("location"); // Add location -dl
+        tailUrl = tailUrl + "&ul=" + a.get("language");
         fsaCore.requestImage('http://127.0.0.1:8000/a.gif?', tailUrl);
     };
     fsaCore.create('send', function(a) {
