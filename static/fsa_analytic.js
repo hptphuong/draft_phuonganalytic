@@ -267,6 +267,8 @@
 
         } else _fsid = getCookie('_fsid').split(".").slice(2).join(".");;
         tracker = new ee;
+
+        // AĐ FIXED info for tracker
         (void 0 != m_name) && tracker.set("name", m_name);
         (void 0 != m_trackingId) && tracker.set("trackingId", m_trackingId);
         (void 0 != m_cookieDomain) && tracker.set("cookieDomain", m_cookieDomain);
@@ -279,16 +281,43 @@
             "/" != m_path.charAt(0) && (m_path = "/" + m_path);
             tracker.set("location", m_loccation.protocol + "//" + m_loccation.hostname + m_path + m_loccation.search);
         }
-        // add language
+        // add language - ul
         (b = O.navigator) && (m_language = (b && (b.language || b.browserLanguage) || "").toLowerCase());
         (void 0 != m_language) && tracker.set('language', m_language);
         tracker.set("encoding", M.characterSet || M.charset);
+        var screen = O.screen
 
+        // add encoding - de
 
-        // add encoding
+        de = M.characterSet || M.charset;
+        tracker.set("encoding", de);
+
+        // add title - dt
+        tracker.set("title", M.title || void 0);
+
+        //add screenColors - sd
+        tracker.set("screenColors", screen.colorDepth + "-bit");
+
+        // add screenResolution - sr
+        tracker.set("screenResolution", screen.width + "x" + screen.height);
+
+        // add viewportSize - vp
+        var g = (e = M.body) && e.clientWidth && e.clientHeight,
+            ca = [],
+            c = M.documentElement;;
+
+        c && c.clientWidth && c.clientHeight && ("CSS1Compat" === M.compatMode || !g) ? ca = [c.clientWidth, c.clientHeight] : g && (ca = [e.clientWidth, e.clientHeight]);
+        c = 0 >= ca[0] || 0 >= ca[1] ? "" : ca.join("x");
+        tracker.set("viewportSize", c);
+
+        //add javaEnabled - je
+        tracker.set("javaEnabled", O.navigator && "function" === typeof O.navigator.javaEnabled && O.navigator.javaEnabled() || !1);
+
 
 
         this.trackers.push(tracker);
+
+
     });
 
     // Implement send function
@@ -301,6 +330,13 @@
         tailUrl = tailUrl + "&tid=" + a.get("trackingId");
         tailUrl = tailUrl + "&dl=" + a.get("location"); // Add location -dl
         tailUrl = tailUrl + "&ul=" + a.get("language");
+        tailUrl = tailUrl + "&de=" + a.get("encoding");
+        tailUrl = tailUrl + "&dt=" + a.get("title");
+        tailUrl = tailUrl + "&sd=" + a.get("screenColors");
+        tailUrl = tailUrl + "&sr=" + a.get("screenResolution");
+        tailUrl = tailUrl + "&vp=" + a.get("viewportSize");
+        tailUrl = tailUrl + "&je=" + a.get("javaEnabled") * 1;
+
         fsaCore.requestImage('http://127.0.0.1:8000/a.gif?', tailUrl);
     };
     fsaCore.create('send', function(a) {

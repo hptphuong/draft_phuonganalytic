@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '78&exp=2wa7_m#8affbm3y0!!k*lc2*b&i)sx0++^8zlvd1g(#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -37,10 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
+    'app.apps.AppConfig'
 ]
 
 MIDDLEWARE = [
-    'firstpycharm.middleware.BookMiddleware',
+    # 'firstpycharm.middleware.BookMiddleware',
     'request_logger.middleware.RequestLoggerMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

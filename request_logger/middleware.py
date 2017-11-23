@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Author: Konstantinos Livieratos <livieratos.konstantinos@gmail.com>
 
-import json
+import json,pprint
 from django.conf import settings
 from kafka import KafkaProducer
 from django.utils.deprecation import MiddlewareMixin
@@ -9,6 +9,9 @@ from django.http import HttpResponse
 
 from django.contrib.gis.geoip2 import GeoIP2
 import base64
+import logging
+import json
+logger = logging.getLogger(__name__)
 producer = KafkaProducer(
     bootstrap_servers=settings.KAFKA_SERVERS,
     retries=5
@@ -30,20 +33,35 @@ class RequestLoggerMiddleware(MiddlewareMixin):
 
 
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-
+        dataExtracted={}
         if x_forwarded_for:
             ip = x_forwarded_for.split(',')[0]
         else:
             ip = request.META.get('REMOTE_ADDR')
+        dataExtracted['ip']=ip
         if (ip == '127.0.0.1'):
-            ip = '118.69.213.98'
+            # ip = '118.69.213.98'
+            ip='27.116.56.1' #
+            dataExtracted['ip_tmp']=ip
         g = GeoIP2('geoip2_db')
+        dataExtracted['country']=str(g.country(ip))
+        dataExtracted['city']=str(g.city(ip))
+        dataExtracted['_fsid']=request['_fsid']
+            
 
-        producer.send(
-            topic='test',
-            key=b'request.tid',
-            value=info['tid'].encode()
-        )
+
+        # producer.send(
+        #     topic='test',
+        #     key=b'request.tid',
+        #     value=info['tid'].encode()
+        # )
+
+        logger.warn("\n=================== Data collector")
+
+        logger.warn(json.dumps(dataExtracted))
+        pprint.pprint(dataExtracted)
+
+        logger.warn("Data collector ===================\n")
         # producer.send(
         #     topic='test',
         #     key=b'request.t',
